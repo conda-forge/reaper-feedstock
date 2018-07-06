@@ -14,14 +14,16 @@ Summary: REAPER: Robust Epoch And Pitch EstimatoR
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/reaper-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/reaper-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/reaper-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/reaper-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/reaper-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/reaper-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/reaper-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/reaper-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/reaper/badges/version.svg)](https://anaconda.org/conda-forge/reaper)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/reaper/badges/downloads.svg)](https://anaconda.org/conda-forge/reaper)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-reaper-green.svg)](https://anaconda.org/conda-forge/reaper) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/reaper.svg)](https://anaconda.org/conda-forge/reaper) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/reaper.svg)](https://anaconda.org/conda-forge/reaper) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/reaper.svg)](https://anaconda.org/conda-forge/reaper) |
 
 Installing reaper
 =================
