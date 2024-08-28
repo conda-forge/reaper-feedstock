@@ -22,6 +22,9 @@ requirements:
   build:
     - cmake
     - ninja  # [win]
+    - make         # [not win]
+    - automake     # [not win]
+    - gnuconfig    # [not win]
     - {{ stdlib("c") }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
