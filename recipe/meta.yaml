@@ -33,8 +33,10 @@ requirements:
 
 test:
   commands:
-    - reaper -h >/dev/null || [[ $? == 1 ]]                        # [unix]
-    - reaper -h & if errorlevel 1 ( exit /b 0) else (exit /b 1)    # [win]
+    - test -f $PREFIX/bin/reaper                                    # [unix]
+    - if not exist %LIBRARY_BIN%\reaper.exe exit 1                  # [win]
+    - reaper -h >/dev/null || [[ $? == 1 ]]                         # [unix]
+    - reaper -h & if errorlevel 1 ( exit /b 0) else (exit /b 1)     # [win]
 
 about:
   home: https://github.com/google/REAPER/
