@@ -33,9 +33,8 @@ requirements:
 
 test:
   commands:
-    # note that reaper returns an exit code of 1 with -h unless
-    # there is another arg
-    - reaper -h please
+    - reaper -h >/dev/null || [[ $? == 1 ]]                        # [unix]
+    - reaper -h & if errorlevel 1 ( exit /b 0) else (exit /b 1)    # [win]
 
 about:
   home: https://github.com/google/REAPER/
