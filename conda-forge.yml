@@ -1,9 +1,16 @@
-compiler_stack: comp7
-max_py_ver: '37'
-max_r_ver: '35'
+azure:
+  settings_win:
+    pool:
+      vmImage: windows-2019
+build_platform:
+  osx_arm64: osx_64
+os_version:
+  linux_64: cos7
 conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
+provider:
+  win: azure
 conda_build:
   pkg_format: '2'

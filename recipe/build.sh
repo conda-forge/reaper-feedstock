@@ -2,6 +2,6 @@
 
 mkdir build
 cd build
-cmake ..
+cmake ${CMAKE_ARGS} ..
 make
 cp reaper ${PREFIX}/bin/
