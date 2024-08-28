@@ -13,7 +13,7 @@ source:
   url: https://github.com/google/{{ name }}/archive/{{ gitversion }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - patches/0001-Windows-compatibility.patch                      # [win]
+    - patches/0001-Windows-compatibility.patch
 
 build:
   number: 1002
@@ -21,7 +21,7 @@ build:
 requirements:
   build:
     - cmake
-    - ninja  # [win]
+    - ninja
     - make         # [not win]
     - automake     # [not win]
     - gnuconfig    # [not win]
