@@ -12,23 +12,31 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/google/{{ name }}/archive/{{ gitversion }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - patches/0001-Windows-compatibility.patch
 
 build:
-  number: 1001
-  skip: True  # [win]
+  number: 1002
 
 requirements:
   build:
     - cmake
+    - ninja
+    - make         # [not win]
+    - automake     # [not win]
+    - gnuconfig    # [not win]
+    - {{ stdlib("c") }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - getopt-win32  # [win]
 
 test:
   commands:
-    # note that reaper returns an exit code of 1 with -h unless
-    # there is another arg
-    - reaper -h please  # [not win]
+    - test -f $PREFIX/bin/reaper                                    # [unix]
+    - if not exist %LIBRARY_BIN%\reaper.exe exit 1                  # [win]
+    - reaper -h >/dev/null || [[ $? == 1 ]]                         # [unix]
+    - reaper -h & if errorlevel 1 ( exit /b 0) else (exit /b 1)     # [win]
 
 about:
   home: https://github.com/google/REAPER/
@@ -40,3 +48,4 @@ about:
 extra:
   recipe-maintainers:
     - stevecassidy
+    - mmcauliffe

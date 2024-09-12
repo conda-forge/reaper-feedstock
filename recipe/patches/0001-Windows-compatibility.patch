@@ -1,0 +1,54 @@
+From 82ad9adbebc58e7555363fa7c0f976897da31dde Mon Sep 17 00:00:00 2001
+From: Michael McAuliffe <michael.e.mcauliffe@gmail.com>
+Date: Tue, 27 Aug 2024 16:38:42 -0700
+Subject: [PATCH] Windows compatibility
+
+---
+ CMakeLists.txt        | 9 +++++++++
+ epoch_tracker_main.cc | 6 +++++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 58d95b6..52878fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,6 +14,9 @@ else()
+ endif()
+ 
+ include_directories(".")
++if(CONDA_ROOT)
++include_directories("${CONDA_ROOT}/include")
++endif()
+ 
+ # Core functionality.
+ add_library(core STATIC core/file_resource.h
+@@ -37,3 +40,9 @@ add_executable(reaper epoch_tracker_main.cc)
+ target_link_libraries(wave core)
+ target_link_libraries(epoch_tracker wave)
+ target_link_libraries(reaper epoch_tracker)
++if(MSVC)
++  target_link_libraries(reaper getopt)
++endif()
++install(TARGETS reaper
++        RUNTIME DESTINATION bin
++)
+diff --git a/epoch_tracker_main.cc b/epoch_tracker_main.cc
+index 56fcd35..3cb0ed7 100644
+--- a/epoch_tracker_main.cc
++++ b/epoch_tracker_main.cc
+@@ -15,7 +15,11 @@ limitations under the License.
+ */
+ 
+ #include <memory>
+-#include <unistd.h>
++#if defined(_WIN32)
++  #include <getopt.h>
++#else
++  #include <unistd.h>
++#endif
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string>
+-- 
+2.45.2.windows.1
+
